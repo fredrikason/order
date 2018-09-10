@@ -22,20 +22,35 @@ public class OrderBook {
     private Map<Long, Order> orders = new ConcurrentHashMap<>();
     private Map<Long, Execution> executions = new ConcurrentHashMap<>();
 
+    private Double executionPrice;
+
+    /**
+     *
+     * @param instrumentId
+     */
     public OrderBook(String instrumentId) {
         this.instrumentId = instrumentId;
     }
 
+    /**
+     *
+     */
     public synchronized void open() {
         state = OrderBookState.OPEN;
     }
 
+    /**
+     *
+     */
     public synchronized void close() {
         state = OrderBookState.CLOSED;
     }
 
-    private Double executionPrice;
-
+    /**
+     * 
+     * @param orderId
+     * @return
+     */
     public boolean containsOrder(Long orderId) {
         return orders.containsKey(orderId);
     }
