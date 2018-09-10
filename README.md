@@ -21,8 +21,6 @@ Test cases
 
 - Unit tests: Unit tests for Order, OrderBook and OrderBookStatistics
 - Integration tests: Integration tests for OrderController and OrderBookController
-  
-Performance considerations
 
 Performance metrics:
 
