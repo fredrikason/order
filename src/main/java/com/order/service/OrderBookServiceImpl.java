@@ -59,13 +59,6 @@ public class OrderBookServiceImpl implements OrderBookService {
 
         orderBook.open();
 
-        //the order book is now open and accepts order
-        List<Order> orders = orderRepository.findByInstrumentId(instrumentId);
-        for (Order order : orders) {
-            if (!orderBook.containsOrder(order.getOrderId()))
-                orderBook.addOrder(order);
-        }
-
         orderBookRepository.store(orderBook);
     }
 
@@ -92,13 +85,6 @@ public class OrderBookServiceImpl implements OrderBookService {
         }
 
         orderBook.close();
-
-        //the order book is now closed and accepts executions
-        List<Execution> executions = executionRepository.findByInstrumentId(instrumentId);
-        for (Execution execution : executions) {
-            if (!orderBook.containsExecution(execution.getExecutionId()))
-                orderBook.addExecution(execution);
-        }
 
         orderBookRepository.store(orderBook);
     }
