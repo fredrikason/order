@@ -21,12 +21,13 @@ Test cases
 
 - Unit tests: Unit tests for Order, OrderBook and OrderBookStatistics
 - Integration tests: Integration tests for OrderController and OrderBookController
+- Functional tests: jmeter test script (resources/Functional tests.jmx)
 
 Performance metrics:
 
 - http://localhost:8080/actuator/prometheus
 
-There is a jmeter performance test (/resource/OMS.jmx) which can be used to generate some metrics and form the basis for automated performance tests. 
+There is a jmeter performance test (/resource/Performance test.jmx) which can be used to generate some metrics and form the basis for automated performance tests. 
 
 The current implementation is stateful and synchronous but can easily be extended to handle order evens asynchronously by adding a message bus.
 The processing of executions is currently sequential but the concurrency level can be approved by adding more fine grained locking.
