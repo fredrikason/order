@@ -32,7 +32,7 @@ public class OrderBookControllerIntegrationTest {
         HttpEntity<Object> entity = new HttpEntity<Object>(headers);
 
         ResponseEntity<String> response1 = restTemplate.exchange(
-                createURLWithPort("/openbook/UBS"),
+                createURLWithPort("/orderbook/open/UBS"),
                 HttpMethod.POST, entity, String.class);
 
         assertEquals(HttpStatus.CREATED, response1.getStatusCode());
@@ -46,7 +46,7 @@ public class OrderBookControllerIntegrationTest {
         assertEquals("OPEN", response2.get("status"));
 
         ResponseEntity<String> response3 = restTemplate.exchange(
-                createURLWithPort("/closebook/UBS"),
+                createURLWithPort("/orderbook/close/UBS"),
                 HttpMethod.POST, entity, String.class);
 
         assertEquals(HttpStatus.CREATED, response3.getStatusCode());

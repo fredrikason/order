@@ -43,7 +43,7 @@ public class OrderBookController {
         return orderBook != null ? new ResponseEntity<>(OrderBookStatisticsFactory.createOrderBookStatistics(orderBook), HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping(value = "/openbook/{instrument_id}")
+    @PostMapping(value = "/orderbook/open/{instrument_id}")
     public ResponseEntity<Object> open(@PathVariable("instrument_id") String instrumentId) {
         logger.info(String.format("Order book service open book for instrumentId: %s", instrumentId));
 
@@ -56,7 +56,7 @@ public class OrderBookController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping(value = "/closebook/{instrument_id}")
+    @PostMapping(value = "/orderbook/close/{instrument_id}")
     public ResponseEntity<Object> close(@PathVariable("instrument_id") String instrumentId) {
         logger.info(String.format("Order book service close book for instrumentId: %s", instrumentId));
 
