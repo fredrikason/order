@@ -65,7 +65,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-    &quot;quantity&quot;: &quot;${Quantity}&quot;,&#xd;
+    &quot;quantity&quot;: &quot;100&quot;,&#xd;
     &quot;instrumentId&quot;: &quot;UBS&quot;,&#xd;
     &quot;price&quot;: 27.35&#xd;
 }</stringProp>
@@ -347,7 +347,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.num_threads">20</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -361,7 +361,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-    &quot;quantity&quot;: &quot;${Quantity}&quot;,&#xd;
+    &quot;quantity&quot;: &quot;50&quot;,&#xd;
     &quot;instrumentId&quot;: &quot;UBS&quot;,&#xd;
     &quot;price&quot;: 21.35&#xd;
 }</stringProp>

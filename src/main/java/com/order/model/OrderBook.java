@@ -202,7 +202,7 @@ public class OrderBook {
      * @return
      */
     private List<Order> getValidOrders() {
-        return orders.values().stream().filter(o -> !o.isInvalid()).collect(Collectors.toList());
+        return orders.values().stream().filter(o -> !o.isInvalid() && !o.isExecuted()).collect(Collectors.toList());
     }
 
     /**
