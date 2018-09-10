@@ -16,13 +16,13 @@ public interface OrderBookService {
     void open(String instrumentId);
 
     /**
-     * Closed and order book
+     * Closes an order book
      * @param instrumentId
      */
     void close(String instrumentId);
 
     /**
-     * Adds an order this book
+     * Adds an order to this book
      * @param order
      */
     void addOrder(Order order);
