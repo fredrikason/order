@@ -133,6 +133,15 @@ public class OrderBookServiceImpl implements OrderBookService {
 
     /**
      *
+     * @return
+     */
+    @Override
+    public List<OrderBook> findAll() {
+        return orderBookRepository.findAll();
+    }
+
+    /**
+     *
      * @param instrumentId
      * @return
      */

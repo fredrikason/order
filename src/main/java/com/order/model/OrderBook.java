@@ -173,7 +173,7 @@ public class OrderBook {
                 int newQty = Math.min(requiredQty, weightedQty);
                 order.setExecutionQuantity(newQty + order.getExecutionQuantity());
                 order.setExecutionPrice(execution.getExecutionPrice());
-                System.out.println(String.format("Execution order %s: %d", order.getOrderId(), order.getExecutionQuantity()));
+                System.out.println(String.format("Execution order %s: %d of %d", order.getOrderId(), order.getExecutionQuantity(), order.getOrderQuantity()));
             }
         }
     }

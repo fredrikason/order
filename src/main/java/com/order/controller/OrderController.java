@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Controller for orders. Adds an order in the order repository and notifies other components.
  */
@@ -62,5 +64,17 @@ public class OrderController {
             return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
         }
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/order/all")
+    public ResponseEntity<List<Order>> findAll() {
+        logger.info("Order service get all");
+
+        try {
+            return new ResponseEntity<>(orderRepository.findAll(), HttpStatus.OK);
+        } catch (Exception ex) {
+            logger.warn("Exception raised findAll REST Call {0}", ex);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

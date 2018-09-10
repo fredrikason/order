@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Controller for order books. Open and close order books using the order book service.
  */
@@ -65,5 +67,17 @@ public class OrderBookController {
             return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
         }
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/orderbook/all")
+    public ResponseEntity<List<OrderBook>> findAll() {
+        logger.info("Order book service get all");
+
+        try {
+            return new ResponseEntity<>(orderBookService.findAll(), HttpStatus.OK);
+        } catch (Exception ex) {
+            logger.warn("Exception raised findByAll REST Call {0}", ex);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

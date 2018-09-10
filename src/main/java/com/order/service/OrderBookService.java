@@ -4,6 +4,8 @@ import com.order.model.Execution;
 import com.order.model.Order;
 import com.order.model.OrderBook;
 
+import java.util.List;
+
 /**
  * Order book service.
  */
@@ -32,6 +34,12 @@ public interface OrderBookService {
      * @param execution
      */
     void addExecution(Execution execution);
+
+    /**
+     *
+     * @return
+     */
+    List<OrderBook> findAll();
 
     /**
      *

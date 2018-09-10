@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Controller for executions. Stores an execution in the repository and notifies other components.
  */
@@ -61,5 +63,17 @@ public class ExecutionController {
             return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
         }
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/execution/all")
+    public ResponseEntity<List<Execution>> findAll() {
+        logger.info("Execution service get all");
+
+        try {
+            return new ResponseEntity<>(executionRepository.findAll(), HttpStatus.OK);
+        } catch (Exception ex) {
+            logger.warn("Exception raised findAll REST Call {0}", ex);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
