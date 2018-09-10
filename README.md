@@ -29,7 +29,7 @@ Performance metrics:
 
 There is a jmeter performance test (/resource/Performance test.jmx) which can be used to generate some metrics and form the basis for automated performance tests. 
 
-The latency and response times for adding and processing orders is adequate and on average around 10ms as measured from jmeter.
+The latency and response times for adding and processing orders is adequate and on average around 10ms (order execution takes 7ms 99% of the time).
 The current implementation is stateful and synchronous but can easily be extended to handle order evens asynchronously by adding a message bus.
 The processing of executions is currently sequential but the concurrency level can be approved by adding more fine grained locking.
 The application could easily be separated out into microservices and scaled both vertically and horizontally by adding more servers and load balancing.
