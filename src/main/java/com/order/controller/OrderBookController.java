@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Controller for order books. Open and close order books using the order book service.
@@ -70,11 +71,13 @@ public class OrderBookController {
     }
 
     @GetMapping(value = "/orderbook/all")
-    public ResponseEntity<List<OrderBook>> findAll() {
+    public ResponseEntity<List<OrderBookStatistics>> findAll() {
         logger.info("Order book service get all");
 
+        List<OrderBookStatistics> orderBooks;
         try {
-            return new ResponseEntity<>(orderBookService.findAll(), HttpStatus.OK);
+            orderBooks = orderBookService.findAll().stream().map(o -> OrderBookStatisticsFactory.createOrderBookStatistics(o)).collect(Collectors.toList());
+            return new ResponseEntity<>(orderBooks, HttpStatus.OK);
         } catch (Exception ex) {
             logger.warn("Exception raised findByAll REST Call {0}", ex);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
